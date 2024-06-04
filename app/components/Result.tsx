@@ -1,4 +1,4 @@
-import { CircleAlert, CircleX, File, ScrollText } from "lucide-react";
+import { CircleAlert, CircleX, ScrollText } from "lucide-react";
 import type { Message, Result as ResultProps, RuleMeta } from "../data/data";
 import {
   AccordionContent,
@@ -9,7 +9,7 @@ import {
 import type { HighlightRanges } from "@nozbe/microfuzz";
 import { Highlight } from "@nozbe/microfuzz/react";
 import { CodeIcon, Lightbulb } from "lucide-react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { shortenSource } from "~/lib/utils";
 import Code from "./Code";
 import { Button } from "./ui/button";
@@ -30,15 +30,9 @@ function ResultRule({
   meta: RuleMeta;
 }) {
   const [showSource, setShowSource] = useState(false);
-  const keyRef = useRef("");
   const splitFile = filePath.split(".");
   const fileLink = `${filePath}:${line}:${column}`;
   const [source, firstLine] = shortenSource(line, sourceCode);
-
-  if (keyRef.current === `${ruleId}:${fileLink}`) {
-    console.log(keyRef.current);
-  }
-  keyRef.current = `${ruleId}:${fileLink}`;
 
   return (
     <Card>
@@ -116,7 +110,6 @@ export function Result(
     metadata,
     highlights,
   } = props;
-  console.log("🚀 ~ highlights:", highlights);
 
   return (
     <AccordionItem value={filePath}>

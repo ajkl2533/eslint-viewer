@@ -1,5 +1,7 @@
-import resultsJSON from "./eslint-report.json" assert { type: "json" };
+// import resultsJSON from "./eslint-report.json" assert { type: "json" };
 // import resultsJSON from "./eslint-report-simplified.json" assert { type: "json" };
+
+const resultsJSON = {};
 
 export interface Fix {
   range: number[];

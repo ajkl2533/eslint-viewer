@@ -41,7 +41,6 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 export default function Rules() {
   const { total, entries, metadata, q } = useLoaderData<typeof loader>();
-  console.log("🚀 ~ Rules ~ metadata:", metadata);
   const submit = useSubmit();
   const filteredList = useFuzzySearchList({
     list: entries,
