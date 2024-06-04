@@ -1,0 +1,122 @@
+@import "@radix-ui/colors/gray.css";
+@import "@radix-ui/colors/amber.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/red.css";
+@import "@radix-ui/colors/gray-dark.css";
+@import "@radix-ui/colors/amber-dark.css";
+@import "@radix-ui/colors/green-dark.css";
+@import "@radix-ui/colors/red-dark.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Inter Variable";
+  font-style: oblique 0deg 10deg;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(@fontsource-variable/inter/files/inter-latin-slnt-normal.woff2)
+    format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/*
+ * 1 App background
+ * 2 Subtle background
+ * 3 UI element background
+ * 4 Hovered UI element background
+ * 5 Active / Selected UI element background
+ * 6 Subtle borders and separators
+ * 7 UI element border and focus rings
+ * 8 Hovered UI element border
+ * 9 Solid backgrounds
+ * 10 Hovered solid backgrounds
+ * 11 Low-contrast text
+ * 12 High-contrast text
+ */
+
+@layer base {
+  :root {
+    --background: var(--gray-1);
+    --foreground: var(--gray-12);
+
+    --card: var(--gray-2);
+    --card-foreground: var(--gray-12);
+
+    --popover: var(--gray-2);
+    --popover-foreground: var(--gray-12);
+
+    --primary: var(--amber-9);
+    --primary-foreground: var(--amber-1);
+
+    --secondary: var(--gray-3);
+    --secondary-foreground: var(--gray-12);
+
+    --muted: var(--amber-surface);
+    --muted-foreground: var(--gray-11);
+
+    --accent: var(--amber-9);
+    --accent-foreground: black;
+
+    --destructive: var(--red-10);
+    --destructive-foreground: var(--red-1);
+
+    --border: var(--gray-6);
+    --input: var(--amber-7);
+    --ring: var(--gray-8);
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter Variable", sans-serif;
+  }
+
+  html.dark .shiki {
+    background-color: var(--shiki-dark-bg, #24292e) !important;
+
+    span {
+      color: var(--shiki-dark) !important;
+    }
+
+    .line.highlight {
+      background-color: rgba(255 255 255/5%) !important;
+    }
+  }
+
+  .shiki {
+    @apply overflow-x-auto rounded-xl p-5;
+    background-color: white !important;
+    font-size: 0.75rem;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+
+    code {
+      display: flex;
+      flex-direction: column;
+      gap: 0.125em;
+    }
+
+    code .line.highlight {
+      line-height: 2em;
+      border-radius: 0.25em;
+      background-color: rgba(0 0 0/5%) !important;
+    }
+    code .line::before {
+      content: attr(data-line);
+      width: 1rem;
+      margin-right: 1.5rem;
+      display: inline-block;
+      text-align: right;
+      color: rgba(115, 138, 148, 0.4);
+    }
+  }
+}
